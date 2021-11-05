@@ -82,12 +82,12 @@ class DitaApp(MDApp):
         self.theme_cls.primary_palette = "DeepPurple"
 
         self.sm = ScreenManager()
+        self.sm.add_widget(MainScreen(name='main'))
         self.sm.add_widget(AppScreen(name='AppScreen'))
         self.sm.add_widget(CommunityScreen(name='CommunityScreen'))
         self.sm.add_widget(LoginScreen(name='login'))
-        self.sm.add_widget(MainScreen(name='main'))
-        self.sm.add_widget(ProfileScreen(name='ProfileScreen'))
         self.sm.add_widget(HomeScreen(name='HomeScreen'))
+        self.sm.add_widget(ProfileScreen(name='ProfileScreen'))
         self.sm.add_widget(ProfileScreen(name='EventScreen'))
         self.sm.add_widget(SignupScreen(name='signup'))
 
