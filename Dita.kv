@@ -1,0 +1,376 @@
+MDScreen:
+    ScreenManager:
+        MainScreen:
+        LoginScreen:
+        SignupScreen:
+        AppScreen:
+
+
+    #######SignUp screen#######################
+<SignupScreen>:
+    name:"signup"
+    #md_bg_color:1,1,1,1
+    MDIconButton:
+        icon: "arrow-left"
+        pos_hint: {"center_y":.98}
+        user_font_size:"30sp"
+        theme_text_color:"Custom"
+        on_release:
+            root.manager.transition.direction = "right"
+            root.manager.current = "main"
+    MDLabel:
+        text: "H i !"
+        font_name: "assets/Poppins-Bold"
+        font_size: "23sp"
+        pos_hint: {"center_x": .59,"center_y": .87}
+        #halign: "center"
+    MDLabel:
+        text: "Create a new account ..."
+        font_name: "assets/Poppins-Light"
+        color: rgba(128,128,128, 225)
+        font_size: "16sp"
+        pos_hint: {"center_x": .59,"center_y": .81}
+        #halign: "center"
+    MDTextField:
+        id:signupadmin
+        hint_text: "Admission number"
+        font_name: "assets/Poppins-Light"
+        size_hint_x:.84
+        multiline: False
+        pos_hint: {"center_x":.5,"center_y": .69}
+    MDTextField:
+        id:signupemail
+        hint_text: "Email"
+        #mode: "rectangle"
+        font_name: "assets/Poppins-Light"
+        size_hint_x:.84
+        multiline: False
+        pos_hint: {"center_x":.5,"center_y": .60}
+    MDTextField:
+        id:signuppassword
+        hint_text: "Password"
+        #mode: "rectangle"
+        font_name: "assets/Poppins-Light"
+        size_hint_x:.84
+        multiline: False
+        password: True
+        pos_hint: {"center_x":.5,"center_y": .51 }
+    Button:
+        text: "SIGNUP"
+        size_hint: .6, .065
+        pos_hint: {"center_x":.5,"center_y": .39}
+        font_name: "assets/Poppins-Bold"
+        on_press: root.ditasignup(signupadmin,signuppassword,signupemail)
+        on_release: signupadmin.text = ""
+        on_release: signuppassword.text = ""
+        on_release: signupemail.text = ""
+
+        canvas.before:
+            Color:
+                rgb:  app.theme_cls.primary_color
+            RoundedRectangle:
+                size: self.size
+                pos: self.pos
+                radius: [5]
+    MDLabel:
+        text: "or"
+        haligh: "center"
+        pos_hint: {"center_x":1,"center_y": .30}
+        font_size: "13sp"
+        font_name: "assets/Poppins-Bold"
+    MDFloatLayout:
+        md_bg_color: rgba(0,0,0, 225)
+        size_hint: .3, .001
+        pos_hint: {"center_x":.25,"center_y": .298}
+    MDFloatLayout:
+        md_bg_color: rgba(0,0,0, 225)
+        size_hint: .3, .001
+        pos_hint: {"center_x":.75,"center_y": .298}
+    MDLabel:
+        text: "Sign up with:"
+        font_name: "assets/Poppins-Bold"
+        font_size: "13sp"
+        halign: "center"
+        pos_hint: {"center_y": .24}
+    MDGridLayout:
+        cols:2
+        size_hint: .45,.07
+        pos_hint: {"center_x":.5,"center_y": .15}
+        Image:
+            source: "assets/dg.png"
+        Image:
+            source: "assets/google.png"
+    MDLabel:
+        text: "Already have member?"
+        font_name: "assets/Poppins-Light"
+        font_size: "13sp"
+        halign: "center"
+        pos_hint: {"center_x":.4,"center_y": .06}
+        color: rgba(128,128,128, 225)
+    MDTextButton:
+        text: "Sign in"
+        font_name: "assets/Poppins-Bold"
+        font_size: "13sp"
+        halign: "center"
+        pos_hint: {"center_x":.8,"center_y": .06}
+        color: rgba(128,128,128, 225)
+        on_release:
+            root.manager.transition.direction = "left"
+            root.manager.current = "login"
+
+#########Login Screen######################
+<LoginScreen>:
+    id:loginsc
+    name:"login"
+    #md_bg_color:1,1,1,1
+    MDIconButton:
+        icon: "arrow-left"
+        pos_hint: {"center_y":.98}
+        user_font_size:"30sp"
+        theme_text_color:"Custom"
+        on_release:
+            root.manager.transition.direction = "right"
+            root.manager.current = "main"
+    MDLabel:
+        text: "W e l c o m e !"
+        font_name: "assets/Poppins-Bold"
+        font_size: "23sp"
+        pos_hint: {"center_x": .59,"center_y": .87}
+        #halign: "center"
+    MDLabel:
+        text: "Sign in to continue..."
+        font_name: "assets/Poppins-Light"
+        font_size: "16sp"
+        pos_hint: {"center_x": .59,"center_y": .81}
+        color: rgba(128,128,128, 225)
+    MDTextField:
+        id:admin
+        hint_text: "Admisson Number"
+        font_name: "assets/Poppins-Light"
+        size_hint_x:.84
+        multiline: False
+        pos_hint: {"center_x":.5,"center_y": .69}
+    MDTextField:
+        id:password
+        hint_text: "password"
+        font_name: "assets/Poppins-Light"
+        size_hint_x:.84
+        multiline: False
+        password: True
+        pos_hint: {"center_x":.5,"center_y": .45}
+    Button:
+        text: "LOGIN"
+        size_hint: .6, .065
+        pos_hint: {"center_x":.5,"center_y": .21}
+        font_name: "assets/Poppins-Bold"
+        on_press: root.ditaLogin(admin,password)
+        on_release: password.text = ""
+        on_release: admin.text = ""
+        canvas.before:
+            Color:
+                rgb:  app.theme_cls.primary_color
+            RoundedRectangle:
+                size: self.size
+                pos: self.pos
+                radius: [5]
+
+    MDLabel:
+        text: "Not registered as a member?"
+        font_name: "assets/Poppins-Light"
+        font_size: "13sp"
+        halign: "center"
+        pos_hint: {"center_x":.4,"center_y": .06}
+        color: rgba(128,128,128, 225)
+    MDTextButton:
+        text: "Sign up"
+        font_name: "assets/Poppins-Bold"
+        font_size: "13sp"
+        halign: "center"
+        pos_hint: {"center_x":.85,"center_y": .06}
+        color: rgba(128,128,128, 225)
+        on_release:
+            root.manager.transition.direction = "left"
+            root.manager.current = "signup"
+
+####################main startscreen##############################
+<mainScreen>:
+    name:"main"
+    #md_bg_color: app.theme_cls.primary_color
+    MDLabel:
+        text: "D I T A "
+        font_size: "23sp"
+        font_name: "assets/Poppins-Light"
+        theme_text_color: "Custom"
+        pos_hint: {"center_y": .9}
+        halign: "center"
+    Image:
+        source: "assets/Dita.jpeg"
+        size_hint: .5, .5
+        #halign: "center"
+        pos_hint:{"center_x": .5, "center_y":.7}
+    MDLabel:
+        text: "D a y s t a r"
+        font_name: "assets/Poppins-Light"
+        pos_hint: {"center_y": .5}
+        halign: "center"
+    MDLabel:
+        text: "Daystar Information Technology club. A community of innovative problem solvers working together and using TECH to better life experience for everyone, at Daystar and beyond. Join Us!!"
+        font_name: "assets/Poppins-Light"
+        font_size: "13sp"
+        pos_hint: {"center_x":.5,"center_y": .35}
+        halign: "center"
+    Button:
+        text: "LOGIN"
+        size_hint: .6, .065
+        pos_hint: {"center_x":.5,"center_y": .18}
+        font_name: "assets/Poppins-Bold"
+        on_release:
+            root.manager.transition.direction = "left"
+            root.manager.current = "login"
+        canvas.before:
+            Color:
+                rgb:  app.theme_cls.primary_color
+            RoundedRectangle:
+                size: self.size
+                pos: self.pos
+                radius: [5]
+    MDRectangleFlatButton:
+        text: "SIGN UP"
+        color: app.theme_cls.primary_color
+        pos_hint: {"center_x":.5,"center_y": .10}
+        size_hint: .6, .065
+        on_release:
+            root.manager.transition.direction = "left"
+            root.manager.current = "signup"
+
+
+
+##################the main application screens################
+
+
+<AppScreen>:
+    name: "AppScreen"
+    MDBoxLayout:
+        orientation:"vertical"
+        MDBottomNavigation:
+            MDBottomNavigationItem:
+                HomeScreen:
+                    name:"HomeScreen"
+                    icon:'home'
+                    MDScreen:
+                        ScrollView:
+                            bar_width:0
+                            MDBoxLayout:
+                                orientation:'vertical'
+                                padding:'20dp'
+                                adaptive_height:True
+                                MDLabel:
+                                    text:'Home Screen'
+                                    font_name:'assets/Poppins-Light'
+                                    adaptive_height:True
+
+            MDBottomNavigationItem:
+                name:"EvenScreen"
+                icon:'calendar-star'
+                MDScreen:
+                    ScrollView:
+                        bar_width:0
+                        MDBoxLayout:
+                            orientation:'vertical'
+                            padding:'20dp'
+                            adaptive_height:True
+                            MDLabel:
+                                text:'Event Screen'
+                                font_name:'assets/Poppins-Light'
+                                adaptive_height:True
+
+            MDBottomNavigationItem:
+                name:"CommunityScreen"
+                icon:'account-group'
+                MDScreen:
+                    ScrollView:
+                        bar_width:
+                        MDBoxLayout:
+                            orientation:'vertical'
+                            padding:'5dp'
+                            adaptive_height:True
+                            MDLabel:
+                                text:'Community Screen'
+                                font_name:'assets/Poppins-Light'
+                                adaptive_height:True
+                            MDList:
+                                id: contact_list
+
+            MDBottomNavigationItem:
+                name:"ProfileScreen"
+                icon:'account'
+                MDScreen:
+                    padding:20
+                    MDFloatLayout:
+                        orientation:'vertical'
+                        adaptive_height:True
+                        canvas:
+                            Color:
+                                rgb: 1, 1, 1
+                            Ellipse:
+                                pos: (70,340)
+                                size: 200 , 200
+                                source: 'assets/profile.jpg'
+                                size: 150,150
+                                angle_start: 0
+                                angle_end: 360
+                        MDLabel:
+                            text:"Profile"
+                            padding: (10,10)
+                            pos_hint: {'center_y':3.3}
+                            font_name: "assets/Poppins-Bold"
+                            font_size: "16sp"
+                            color: rgba(128,128,128, 225)
+
+                        MDLabel:
+                            text:"Name:"
+                            padding: (10,10)
+                            pos_hint: {"center_y": 3}
+                            font_name: "assets/Poppins-Light"
+                            font_size: "16sp"
+                            color: rgba(128,128,128, 225)
+
+                        MDLabel:
+                            text:"E g e s a   W a y n e"
+                            padding: (10,10)
+                            pos_hint: {"center_y": 2.8}
+                            font_name: "assets/Poppins-Bold"
+                            font_size: "16sp"
+                            #color: rgba(128,128,128, 225)
+
+                        MDLabel:
+                            text:"Amission Number:"
+                            padding: (10,10)
+                            pos_hint: {"center_y": 2.5}
+                            font_name: "assets/Poppins-Light"
+                            font_size: "16sp"
+                            color: rgba(128,128,128, 225)
+
+                        MDLabel:
+                            text:"21-0265"
+                            padding: (10,10)
+                            pos_hint: {"center_y": 2.3}
+                            font_name: "assets/Poppins-Light"
+                            font_size: "16sp"
+                            #color: rgba(128,128,128, 225)
+
+                        MDLabel:
+                            text:"Contacts:"
+                            padding: (10,10)
+                            pos_hint: {"center_y": 2}
+                            font_name: "assets/Poppins-Light"
+                            font_size: "16sp"
+                            color: rgba(128,128,128, 225)
+
+                        MDLabel:
+                            text:"0720585414 | egesa@daystar.ac.ke"
+                            padding: (10,10)
+                            pos_hint: {"center_y": 1.8}
+                            font_name: "assets/Poppins-Light"
+                            font_size: "16sp"
+                            #color: rgba(128,128,128, 225)
